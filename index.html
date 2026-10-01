@@ -560,6 +560,31 @@
       margin-top: 4px;
     }
 
+    /* Laundry Operations Checklist */
+    .checklist-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--bg-dark);
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+
     @media (max-width: 900px) {
       body {
         flex-direction: column;
@@ -585,7 +610,7 @@
     </div>
     <ul class="nav-menu">
       <li class="nav-item active" onclick="switchTab('review-questions')">
-        <span>📝</span> Policy Review Bank <span class="nav-badge">19 Qs</span>
+        <span>📝</span> Policy Review Bank <span class="nav-badge" id="sidebar-badge">100 Qs</span>
       </li>
       <li class="nav-item" onclick="switchTab('amharic-policy')">
         <span>🇪🇹</span> አማርኛ ፖሊሲ ሰነድ (Full Text)
@@ -603,17 +628,20 @@
         <span>⚙️</span> Institutional Reforms
       </li>
       <li class="nav-item" onclick="switchTab('medicolegal-ethics')">
-        <span>⚖️</span> Regulatory & Indigenous Knowledge
+        <span>⚖️</span> Medicolegal, Regulatory & Ethics
       </li>
       <li class="nav-item" onclick="switchTab('operational-toolkit')">
         <span>🧮</span> Disinfection & Duty Tools
+      </li>
+      <li class="nav-item" onclick="switchTab('laundry-sop')">
+        <span>🧺</span> Laundry SOP & Quality Monitoring
       </li>
       <li class="nav-item" onclick="switchTab('references')">
         <span>📚</span> References & Directives
       </li>
     </ul>
     <div class="search-box">
-      <input type="text" id="searchInput" oninput="globalSearch()" placeholder="Search Qs, One Health, Bleach, APTS, Duty Pay...">
+      <input type="text" id="searchInput" oninput="globalSearch()" placeholder="Search Qs, Ethics, Negligence, Informed Consent, Bleach...">
     </div>
   </div>
 
@@ -628,7 +656,7 @@
     <div id="review-questions" class="tab-panel active">
       <div class="controls-bar">
         <div class="progress-tracker">
-          <div class="stat-badge">Total Questions: <strong id="total-count">19</strong></div>
+          <div class="stat-badge">Total Questions: <strong id="total-count">100</strong></div>
           <div class="stat-badge">Mastered: <strong id="mastered-count" style="color: var(--mastered-color)">0</strong></div>
           <div class="stat-badge">Needs Review: <strong id="review-count" style="color: var(--review-color)">0</strong></div>
         </div>
@@ -638,408 +666,8 @@
         </div>
       </div>
 
-      <!-- Section 1 -->
-      <h2 style="color: var(--accent); margin: 20px 0 15px 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
-        Section 1: Background, Policy Rationale & Evolution (መግቢያ እና መነሻዎች)
-      </h2>
-
-      <div class="q-card searchable" id="q1">
-        <div class="q-header">
-          <span class="q-num">Q1 • Background</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(1, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(1, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">How does the April 2024 Policy classify the historical stages (generations) of Ethiopia’s health policy evolution, and what were the primary achievements of the first three generations?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(1)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-1">
-          <p><strong>Answer:</strong> The policy classifies healthcare evolution into four distinct generations:</p>
-          <ul>
-            <li><strong>1st Generation (1960s E.C.):</strong> Focused on infectious disease eradication campaigns, notably smallpox eradication and control of major epidemic threats.</li>
-            <li><strong>2nd Generation (Mid-1970s E.C.):</strong> Initiated formal Primary Health Care (PHC) strategies and launched the Expanded Program on Immunization (EPI).</li>
-            <li><strong>3rd Generation (1993 / 1986 E.C.):</strong> Formulated the 1993 Health Policy, establishing a 3-tier delivery system, decentralized administration, and launching the Health Extension Program (HEP), which expanded basic care to rural communities.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q2">
-        <div class="q-header">
-          <span class="q-num">Q2 • Rationale</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(2, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(2, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What major demographic, epidemiological, socio-economic, and health system challenges necessitated replacing the 1993 (1986 E.C.) Health Policy?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(2)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-2">
-          <p><strong>Answer:</strong> Key drivers for policy revision included:</p>
-          <ul>
-            <li><strong>Triple Burden of Disease:</strong> High NCD prevalence (cardiovascular, cancer, diabetes) alongside persisting communicable diseases and rising trauma/injuries.</li>
-            <li><strong>High Out-of-Pocket Expense:</strong> Severe financial hardship facing households accessing secondary and tertiary care.</li>
-            <li><strong>Health Security Threats:</strong> Vulnerabilities highlighted by COVID-19, public health emergencies, climate change, and regional conflicts.</li>
-            <li><strong>Technological & Societal Shifts:</strong> Urbanization, population growth, and rapid advances in digital health and Artificial Intelligence.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q3">
-        <div class="q-header">
-          <span class="q-num">Q3 • Demographics</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(3, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(3, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">According to background data in the policy document, how did average life expectancy in Ethiopia change between 1995 (1987 E.C.) and 2023 (2015 E.C.)?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(3)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-3">
-          <p><strong>Answer:</strong> Average life expectancy at birth rose significantly from <strong>49 years in 1995 (1987 E.C.)</strong> to <strong>66.7 years in 2023 (2015 E.C.)</strong>, demonstrating substantial gains driven by the expansion of primary healthcare and child survival programs.</p>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q4">
-        <div class="q-header">
-          <span class="q-num">Q4 • Constitutional Mandates</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(4, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(4, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">Which specific articles of the Constitution of the FDRE establish the state's obligation to protect and improve public health?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(4)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-4">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>Article 89(8):</strong> Mandates that the government holds the obligation to allocate resources to protect and improve public health, safety, and general welfare.</li>
-            <li><strong>Article 90(1):</strong> Directs state policies to ensure that all Ethiopians have access to public health services, clean water, and basic social amenities within available national resources.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 2 -->
-      <h2 style="color: var(--accent); margin: 25px 0 15px 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
-        Section 2: Policy Principles, Vision & Objectives (መبادዎች፣ ራዕይ እና ዓላማዎች)
-      </h2>
-
-      <div class="q-card searchable" id="q5">
-        <div class="q-header">
-          <span class="q-num">Q5 • Core Principles</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(5, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(5, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">List and explain the seven core guiding principles upon which the April 2024 Health Policy is founded.</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(5)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-5">
-          <p><strong>Answer:</strong> The seven guiding principles are:</p>
-          <ol>
-            <li><strong>Equity & Inclusion:</strong> Uncompromised access for all, eliminating geographic, financial, and social barriers.</li>
-            <li><strong>Quality & Safety:</strong> Standardized, evidence-based, safe, and compassionate clinical care.</li>
-            <li><strong>Sustainability & Resilience:</strong> Domestic resource expansion and emergency preparedness.</li>
-            <li><strong>Evidence-Based Decision Making:</strong> Relying on health metrics, research, and data systems.</li>
-            <li><strong>Transparency & Accountability:</strong> Ethical governance across administrative and facility tiers.</li>
-            <li><strong>Multisectoral Collaboration:</strong> Active partnership with non-health sectors ("Health in All Policies").</li>
-            <li><strong>Professional Ethics & Integrity:</strong> High workforce standards, respect, and patient dignity.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q6">
-        <div class="q-header">
-          <span class="q-num">Q6 • National Vision</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(6, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(6, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What is the official vision statement defined in the April 2024 Policy document?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(6)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-6">
-          <p><strong>Answer:</strong> <em>"To see a healthy, productive, and prosperous society through equitable, high-quality, and resilient healthcare services."</em></p>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q7">
-        <div class="q-header">
-          <span class="q-num">Q7 • Strategic Objectives</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(7, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(7, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What are the primary overarching objectives outlined to achieve Universal Health Coverage (UHC) and protect citizens from financial distress?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(7)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-7">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Achieve Universal Health Coverage (UHC) by guaranteeing access to an essential package of quality health services.</li>
-            <li>Ensure financial protection through expanded insurance mechanisms (CBHI/SHI) and a dedicated National Health Fund to minimize direct out-of-pocket medical expenses.</li>
-            <li>Build a resilient health system capable of anticipating, preventing, responding to, and recovering from public health risks and emergencies.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 3 -->
-      <h2 style="color: var(--accent); margin: 25px 0 15px 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
-        Section 3: Priority Policy Directions (የፖሊሲ ዋና ዋና ጉዳዮች እና አቅጣጫዎች)
-      </h2>
-
-      <div class="q-card searchable" id="q8">
-        <div class="q-header">
-          <span class="q-num">Q8 • PHC & Vulnerable Groups</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(8, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(8, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">How does the policy adapt the Health Extension Program (HEP) across context settings, and what provisions exist for vulnerable groups?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(8)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-8">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>Tailored HEP Models:</strong> Adapts second-generation HEP to specific operational realities in <em>Agrarian</em>, <em>Pastoralist/Semi-pastoralist</em> (mobile health units), and <em>Urban</em> settings (eCHIS digital reporting, NCD screening).</li>
-            <li><strong>Special Needs & Equity:</strong> Explicit directives mandate tailored infrastructure, specialized communication tools, and targeted subsidies for persons with disabilities, elderly citizens, refugees, internally displaced persons (IDPs), and vulnerable women/children.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q9">
-        <div class="q-header">
-          <span class="q-num">Q9 • Specialized Care & Medical Tourism</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(9, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(9, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What policy directions are set for specialized care, organ transplantation, ICU capacity expansion, and positioning Ethiopia as a regional medical tourism hub?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(9)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-9">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Strengthen tertiary centers for sub-specialties including oncology, cardiology, neurosurgery, organ transplantation, and advanced ICU care.</li>
-            <li>Establish legislative and ethical frameworks for human organ/tissue donation and transplantation.</li>
-            <li>Accredit specialized public and private centers to international quality standards to retain domestic healthcare spending and position Ethiopia as a regional hub for medical tourism in East Africa.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q10">
-        <div class="q-header">
-          <span class="q-num">Q10 • "One Health" & Emergencies</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(10, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(10, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">How does the policy define the "One Health" strategy regarding zoonotic risks, environmental hazards, and border screening?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(10)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-10">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>One Health Framework:</strong> Mandates collaborative, cross-sectoral surveillance and mitigation for zoonotic outbreaks, antimicrobial resistance (AMR), and food/environmental safety between human, animal, and environmental health sectors.</li>
-            <li><strong>Border Screening:</strong> Mandatory screening, quarantine protocols, and surveillance at national borders, international airports, and ports of entry to manage cross-border disease transmission.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q11">
-        <div class="q-header">
-          <span class="q-num">Q11 • Digital Health & AI</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(11, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(11, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What specific applications of Artificial Intelligence (AI) are mandated in the policy regarding diagnostic imaging, predictive modeling, and remote care?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(11)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-11">
-          <p><strong>Answer:</strong> The policy explicitly integrates AI technology for:</p>
-          <ul>
-            <li>Diagnostic imaging interpretation (radiology, pathology, screening).</li>
-            <li>Predictive epidemiological modeling for epidemic forecasting and resource allocation.</li>
-            <li>Automated patient electronic medical record (EMR) analysis and clinical decision support.</li>
-            <li>Telemedicine and remote specialist consultation expansion across underserved regions.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q12">
-        <div class="q-header">
-          <span class="q-num">Q12 • Community Governance</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(12, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(12, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">In what ways does the policy guarantee community representation and women’s empowerment in facility management?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(12)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-12">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Mandates community board membership and user representation in primary and secondary hospital governing boards.</li>
-            <li>Enforces structural participation of women in health development teams, facility boards, and local healthcare decision-making bodies.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q13">
-        <div class="q-header">
-          <span class="q-num">Q13 • Financing & SBFR</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(13, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(13, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">How does the policy address reducing high out-of-pocket medical expenditure, and what are directives concerning the National Health Fund and SBFR?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(13)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-13">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>National Health Fund (የጤና ፈንድ):</strong> Establishes a dedicated national fund supported by government allocation, earmarked health taxes (sin taxes on tobacco/alcohol/sugary beverages), and development partners.</li>
-            <li><strong>SBFR (Special Pharmacy / Revenue Retention):</strong> Legally protects health facilities' right to retain internally generated revenue from service fees to procure pharmaceuticals, maintain medical equipment, and improve facility quality.</li>
-            <li><strong>CBHI / SHI Expansion:</strong> Scaling up Community-Based Health Insurance and Social Health Insurance to reach universal coverage.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q14">
-        <div class="q-header">
-          <span class="q-num">Q14 • Traditional Medicine</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(14, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(14, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What frameworks are established for registration, scientific validation, safety screening, intellectual property, and integration of traditional medicine?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(14)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-14">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Establishes formal regulatory pathways under EFDA for licensing traditional practitioners and registering herbal remedies.</li>
-            <li>Requires rigorous laboratory screening and clinical research to scientifically validate efficacy while eliminating harmful practices.</li>
-            <li>Protects traditional practitioners' Intellectual Property (IP) rights and indigenous knowledge regarding medicinal flora.</li>
-            <li>Fosters formal integration of safe traditional remedies into modern health delivery settings.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q15">
-        <div class="q-header">
-          <span class="q-num">Q15 • Food Safety & Nutrition</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(15, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(15, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">What multisectoral strategies are outlined to ensure food safety from "farm to table" and prevent multi-age malnutrition?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(15)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-15">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Integrates food safety enforcement across production, transport, processing, and retail stages ("farm to table").</li>
-            <li>Strengthens national food fortification regulations (e.g., salt iodization, flour fortification).</li>
-            <li>Promotes multisectoral nutrition actions targeting the first 1,000 days of life, adolescent girls, and pregnant women to eradicate stunting and wasting.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 4 -->
-      <h2 style="color: var(--accent); margin: 25px 0 15px 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
-        Section 4: Key Result Areas / KRAs (ቁልፍ የውጤት መስኮች)
-      </h2>
-
-      <div class="q-card searchable" id="q16">
-        <div class="q-header">
-          <span class="q-num">Q16 • Key Result Areas</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(16, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(16, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">Detail the six Key Result Areas (KRAs) established by the policy to measure national health performance.</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(16)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-16">
-          <p><strong>Answer:</strong> The policy measures overall health transformation against 6 core KRAs:</p>
-          <ol>
-            <li><strong>Citizen Health Improvement & Mortality Reduction:</strong> Lowering maternal, neonatal, infant, and overall premature mortality.</li>
-            <li><strong>Quality & Equitable Health Infrastructure:</strong> Modernizing, equipping, and expanding healthcare facilities across urban and rural zones.</li>
-            <li><strong>Accessible & Quality Medical Supplies & Equipment:</strong> Achieving supply security for essential medicines, vaccines, and diagnostic tools.</li>
-            <li><strong>Sustainable Financial Capacity Development:</strong> Expanding health insurance and domestic financing mechanisms.</li>
-            <li><strong>Strong Sectoral Implementation Capacity:</strong> Developing a competent, ethical workforce and robust health information systems.</li>
-            <li><strong>Client / Patient Satisfaction:</strong> Ensuring high client satisfaction through respectful, compassionate, and transparent care.</li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- Section 5 -->
-      <h2 style="color: var(--accent); margin: 25px 0 15px 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
-        Section 5: Implementation Strategies & Inter-Ministerial Roles (የፖሊሲው ማስፈፀሚያ ስትራቴጂዎች)
-      </h2>
-
-      <div class="q-card searchable" id="q17">
-        <div class="q-header">
-          <span class="q-num">Q17 • Inter-Ministerial Mandates</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(17, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(17, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">According to Section 7 of the policy, describe the explicit statutory health-related mandates assigned across government ministries.</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(17)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-17">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>MInT:</strong> Digital health infrastructure, connectivity, and technological innovation.</li>
-            <li><strong>MoE:</strong> Health education in school curricula, school feeding programs, and workforce development in teaching hospitals.</li>
-            <li><strong>MoWSA:</strong> Protecting vulnerable groups, gender equality in health, and health services for refugees/IDPs.</li>
-            <li><strong>MoA:</strong> Agricultural food security, chemical/pesticide safety, and zoonotic control under One Health.</li>
-            <li><strong>Transport & Logistics:</strong> Road safety, emission controls, and emergency transportation links.</li>
-            <li><strong>Water & Energy / Urban Infrastructure:</strong> Safe drinking water, sanitation facilities, power grid stability for health centers, and physical facility standards.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q18">
-        <div class="q-header">
-          <span class="q-num">Q18 • Legislative Directives</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(18, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(18, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">Which existing proclamations are slated for amendment, and what new proclamations/directives are mandated under this policy?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(18)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-18">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li><strong>Amendments:</strong> Revision of Food and Medicine Administration Proclamation No. 1112/2019, insurance laws, and health regulatory directives.</li>
-            <li><strong>New Enactments:</strong> Formulating specialized proclamations for Health Service Governance, Emergency Preparedness and Public Health Control, Organ Transplantation Regulation, and Dangerous Pathogen Control.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-card searchable" id="q19">
-        <div class="q-header">
-          <span class="q-num">Q19 • Monitoring & Evaluation</span>
-          <div>
-            <button class="btn-status" onclick="setQStatus(19, 'mastered')">✓ Mastered</button>
-            <button class="btn-status" onclick="setQStatus(19, 'review')">⚠ Review</button>
-          </div>
-        </div>
-        <div class="q-title">How does the policy establish monitoring, evaluation, and periodic policy review mechanisms across administrative tiers?</div>
-        <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(19)">Reveal Cited Answer Key</button>
-        <div class="answer-box" id="ans-19">
-          <p><strong>Answer:</strong></p>
-          <ul>
-            <li>Establishes structured quarterly and annual performance reviews using standardized KPI frameworks across federal, regional (RHB), zonal, and district (Woreda) health offices.</li>
-            <li>Mandates mid-term policy reviews and a comprehensive 10-year policy evaluation cycle to adapt strategies to evolving outcomes.</li>
-          </ul>
-        </div>
-      </div>
-
+      <!-- Container where JS renders all 100 question cards -->
+      <div id="questions-container"></div>
     </div>
 
     <!-- TAB 1: AMHARIC POLICY DOCUMENT -->
@@ -1336,36 +964,78 @@
       </div>
     </div>
 
-    <!-- TAB 6: MEDICOLEGAL & ETHICS -->
+    <!-- TAB 6: MEDICOLEGAL, REGULATORY & ETHICS (EXPANDED COMPREHENSIVE MODULE) -->
     <div id="medicolegal-ethics" class="tab-panel">
+      <div class="card searchable">
+        <h3>Comprehensive Medicolegal & Professional Ethics Framework</h3>
+        <p>Regulatory oversight, medical law, professional ethics, and risk management in Ethiopian health administration and clinical practice.</p>
+      </div>
+
       <div class="grid-2">
         <div class="card searchable">
-          <h3>Regulatory Oversight & Re-licensing</h3>
-          <p>Enforced by autonomous national regulatory bodies (EFDA) and regional authorities.</p>
+          <h3>1. Informed Consent & Medical Autonomy</h3>
+          <p>Statutory standards governing clinical consent, patient autonomy, and disclosure laws under Ethiopian health regulations:</p>
           <ul>
-            <li>Mandatory Continuous Professional Development (CPD) credit points and standard competency assessments for medical re-licensing.</li>
-            <li>Surveillance and enforcement against substandard, counterfeit, and illegal medicines or devices.</li>
+            <li><strong>Elements of Valid Consent:</strong> Voluntariness, mental decision-making capacity, and full disclosure of procedures, risks, expected outcomes, and alternatives.</li>
+            <li><strong>Emergency Bypass Exceptions:</strong> Emergency medical procedures may proceed without prior explicit consent when life-threatening risks exist, the patient is unconscious or incapacitated, and no legal guardian/proxy is immediately reachable.</li>
+            <li><strong>Minors & Surrogates:</strong> Legal consent for minors (under 18 years) must be executed by parents or court-appointed legal guardians, except in emergency care, reproductive health services, or emancipated situations as defined by law.</li>
           </ul>
         </div>
 
         <div class="card searchable">
-          <h3>Indigenous Knowledge & Traditional Medicine Integration</h3>
-          <p>Formally standardizes and institutionalizes Ethiopian traditional medicine.</p>
+          <h3>2. Professional Negligence & Medical Malpractice</h3>
+          <p>Legal definitions and trial standards for clinical negligence and adverse event evaluations:</p>
           <ul>
-            <li><strong>Institutional Integration:</strong> Integration of safe, verified traditional medical practices alongside modern health services.</li>
-            <li><strong>Registration & Intellectual Property:</strong> Establishing national registries for indigenous medical knowledge, plant conservation, and protecting practitioner intellectual property.</li>
-            <li><strong>Safety & Research:</strong> Mandatory scientific screening to eliminate harmful practices while validating therapeutic efficacy in bio-prospecting research.</li>
+            <li><strong>Four Legal Elements of Malpractice:</strong> Legal action requires proving <em>Duty of Care</em>, <em>Breach of Standard</em>, <em>Direct Causation</em>, and <em>Actual Injury/Damages</em>.</li>
+            <li><strong>Standard of Care:</strong> Measured against what a reasonably competent health practitioner of similar specialty and training would do under equivalent facility settings according to National STGs.</li>
+            <li><strong>Documentation & Defensiveness:</strong> Clear, legible, chronological, and unaltered clinical records serve as the primary legal evidence in malpractice defense.</li>
           </ul>
         </div>
 
         <div class="card searchable">
-          <h3>Medical Ethics, Liability & Professional Committees</h3>
-          <p>Professional Ethics and Medico-Legal Review Committees evaluate cases against national STGs to ensure professional accountability, protect patient rights, and address clinical negligence.</p>
+          <h3>3. Regulatory Bodies & Re-licensing Standards</h3>
+          <p>Enforcement structures for clinical quality and professional accreditation:</p>
+
+          <ul>
+            <li><strong>EFDA Oversight:</strong> Regulatory control over pharmaceuticals, medical devices, blood products, cosmetic safety, and food standards.</li>
+            <li><strong>Health Professional Licensing:</strong> Mandatory re-licensing every 3 to 5 years verified by Regional Health Bureaus (RHB) and professional councils.</li>
+            <li><strong>CPD Requirements:</strong> Accumulation of certified Continuous Professional Development (CPD) credit points as a prerequisite for professional license renewal.</li>
+          </ul>
+        </div>
+
+        <div class="card searchable">
+          <h3>4. Ethics Committees & Statutory Investigations</h3>
+          <p>Functions of institutional and national disciplinary bodies:</p>
+          <ul>
+            <li><strong>Ethics Review Committees:</strong> Standardized institutional panels responsible for evaluating patient complaints, clinical errors, and professional misconduct.</li>
+            <li><strong>Disciplinary Sanctions:</strong> Ranging from written warnings and mandatory clinical re-training to license suspension or permanent revocation.</li>
+            <li><strong>Referral Pathways:</strong> Cases involving criminal breach, willful gross negligence, or illegal practice are escalated to state prosecuting bodies.</li>
+          </ul>
+        </div>
+
+        <div class="card searchable">
+          <h3>5. Patient Rights & Confidentiality Protection</h3>
+          <p>Legal mandates safeguarding medical privacy and client dignity:</p>
+          <ul>
+            <li><strong>Confidentiality Directives:</strong> Patient health information cannot be disclosed without explicit written authorization.</li>
+            <li><strong>Statutory Disclosure Exceptions:</strong> Mandatory reporting of high-consequence communicable disease outbreaks, court subpoenas, or imminent threats of harm to self/others.</li>
+            <li><strong>Respectful Care:</strong> Guaranteeing compassionate, non-discriminatory, and dignified treatment across all facility tiers.</li>
+          </ul>
+        </div>
+
+        <div class="card searchable">
+          <h3>6. Regulation of Traditional & Indigenous Medicine</h3>
+          <p>Integrating traditional healthcare within legal and safety boundaries:</p>
+          <ul>
+            <li><strong>Practitioner Licensing:</strong> Registration and certification of authentic traditional healers under EFDA frameworks.</li>
+            <li><strong>Toxicity & Safety Testing:</strong> Mandatory laboratory screening of traditional herbal formulations for toxicity, dangerous contaminants, and microbial safety.</li>
+            <li><strong>Intellectual Property (IP) Rights:</strong> Protecting indigenous knowledge and plant-based medicinal formulations against bio-piracy.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- TAB 7: OPERATIONAL TOOLKIT (NEW UTILITIES) -->
+    <!-- TAB 7: OPERATIONAL TOOLKIT -->
     <div id="operational-toolkit" class="tab-panel">
       <div class="card searchable">
         <h3>Hospital Infection Control: Liquid Bleach Dilution Calculator</h3>
@@ -1456,17 +1126,108 @@
       </div>
     </div>
 
-    <!-- TAB 8: REFERENCES -->
+    <!-- TAB 8: LAUNDRY SOP & QUALITY MONITORING -->
+    <div id="laundry-sop" class="tab-panel">
+      <div class="card searchable">
+        <h3>Hospital Apparel & Laundry Unit Operational SOPs</h3>
+        <p>Standardized guidelines for collection, sorting, thermal/chemical disinfection, washing parameters, folding, and distribution of hospital textiles in compliance with CASH and IPC guidelines.</p>
+        <ul style="margin-top: 10px;">
+          <li><strong>Dirty & Soiled Segregation:</strong> Separate non-soiled linen from heavily soiled/soaked linen at point of generation. Use color-coded leak-proof bags.</li>
+          <li><strong>Thermal Disinfection:</strong> Minimum 70°C for 25 minutes or 90°C for 10 minutes during the main wash cycle.</li>
+          <li><strong>Chemical Disinfection:</strong> Sodium hypochlorite bleach dosage (0.05% to 0.1% final concentration) for non-autoclavable whites and infected textiles.</li>
+          <li><strong>Quality Inspection:</strong> Post-wash physical checks for blood/stain residual, tearing, thread count integrity, and complete dryness before packaging.</li>
+        </ul>
+      </div>
+
+      <!-- Laundry Chemical Dosing Calculator -->
+      <div class="calc-container searchable">
+        <h4 style="color: var(--accent); margin-bottom: 12px;">Laundry Chemical & Detergent Dosing Calculator</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="linenWeight">Dry Linen Weight (kg):</label>
+            <input type="number" id="linenWeight" value="25" min="1" step="0.5" oninput="calculateLaundryDose()">
+          </div>
+          <div class="calc-field">
+            <label for="soilLevel">Soiling Classification:</label>
+            <select id="soilLevel" onchange="calculateLaundryDose()">
+              <option value="light">Light Soil (General Ward Bedding)</option>
+              <option value="medium">Medium Soil (OPD / Ward Uniforms)</option>
+              <option value="heavy">Heavy / Contaminated (OR / ICU / Delivery Soiled)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-output">
+          <h4>Required Dosing Recipe:</h4>
+          <div class="calc-result-grid">
+            <div class="calc-result-box">
+              <span>Commercial Detergent:</span>
+              <strong id="resDetergent">250 g</strong>
+            </div>
+            <div class="calc-result-box">
+              <span>Disinfectant Bleach (5% Stock):</span>
+              <strong id="resBleachDose">375 mL</strong>
+            </div>
+            <div class="calc-result-box" style="border-left-color: var(--mastered-color);">
+              <span>Estimated Wash Cycle Time:</span>
+              <strong id="resCycleTime" style="color: var(--mastered-color);">45 min</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operational Compliance Checklist -->
+      <div class="card searchable">
+        <h3>Laundry & Apparel Quality Monitoring Checklist</h3>
+        <p>Daily operational checklist for Quality Monitoring Desk leads and unit supervisors:</p>
+        
+        <div class="checklist-group">
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Staff equipped with appropriate PPE (heavy-duty gloves, boots, waterproof aprons, masks).</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Dirty and clean linen transport trolleys are strictly separated and designated.</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Water temperature during main wash cycle verified at >= 70°C (if thermal washing).</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Disinfectant contact time maintained for at least 15-20 minutes in the soak tank.</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Clean apparel dried completely, inspected for tears, ironed, and folded systematically.</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" onchange="updateChecklistCount()">
+            <span>Clean linen store room maintained dust-free, elevated off floor level, and locked.</span>
+          </label>
+        </div>
+
+        <div style="margin-top: 15px; display: flex; align-items: center; justify-content: space-between;">
+          <span class="stat-badge">Compliance Score: <strong id="checklist-score" style="color: var(--mastered-color)">0 / 6 (0%)</strong></span>
+          <button class="btn" onclick="resetChecklist()">Reset Checklist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 9: REFERENCES -->
     <div id="references" class="tab-panel">
       <div class="card searchable">
         <h3>Official Legislative Directives & Policy References</h3>
         <ol class="ref-list">
           <li><strong>Federal Democratic Republic of Ethiopia (FDRE) - Ministry of Health:</strong> <em>Health Policy of the Federal Democratic Republic of Ethiopia (የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ የጤና ፖሊሲ)</em>, Approved April 2024 / ሚያዚያ 2016 ዓ.ም., Addis Ababa, Ethiopia.</li>
           <li><strong>FDRE House of Peoples' Representatives:</strong> <em>Constitution of the Federal Democratic Republic of Ethiopia (Articles 89(8) and 90(1) on public health responsibility)</em>.</li>
+          <li><strong>FDRE Ministry of Health:</strong> <em>Health Professional Code of Ethics and Medico-Legal Review Guidelines</em>.</li>
           <li><strong>Federal Ministry of Health:</strong> <em>Ethiopian Hospital Services Transformation Guidelines (EHSTG) / EHSIG Vol 1 & 2</em>.</li>
           <li><strong>FDRE Proclamation No. 1112/2019:</strong> <em>Food and Medicine Administration Proclamation</em>.</li>
           <li><strong>EFDA & MOH:</strong> <em>Health Professional Code of Ethics, Licensing, and Continuous Professional Development (CPD) Directives</em>.</li>
           <li><strong>MOH Quality Directorate:</strong> <em>SBFR, CASH, APTS, and EHAQ Implementation Protocols</em>.</li>
+          <li><strong>MOH Environmental Health & IPC Desk:</strong> <em>Hospital Textile Management, Infection Prevention & Control (IPC) and Laundry Operational Standard Operating Procedures (SOP)</em>.</li>
         </ol>
       </div>
     </div>
@@ -1474,7 +1235,770 @@
   </div>
 
   <script>
+    // Database containing exactly 100 comprehensive questions covering all sections
+    const questionsData = [
+      // Section 1: Background & Evolution (1-10)
+      {
+        id: 1,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Background",
+        q: "How does the April 2024 Policy classify the historical stages (generations) of Ethiopia’s health policy evolution, and what were the primary achievements of the first three generations?",
+        a: "<p><strong>Answer:</strong> The policy classifies healthcare evolution into four distinct generations:</p><ul><li><strong>1st Generation (1960s E.C.):</strong> Focused on infectious disease eradication campaigns, notably smallpox eradication and control of major epidemic threats.</li><li><strong>2nd Generation (Mid-1970s E.C.):</strong> Initiated formal Primary Health Care (PHC) strategies and launched the Expanded Program on Immunization (EPI).</li><li><strong>3rd Generation (1993 / 1986 E.C.):</strong> Formulated the 1993 Health Policy, establishing a 3-tier delivery system, decentralized administration, and launching the Health Extension Program (HEP), which expanded basic care to rural communities.</li></ul>"
+      },
+      {
+        id: 2,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Rationale",
+        q: "What major demographic, epidemiological, socio-economic, and health system challenges necessitated replacing the 1993 (1986 E.C.) Health Policy?",
+        a: "<p><strong>Answer:</strong> Key drivers for policy revision included:</p><ul><li><strong>Triple Burden of Disease:</strong> High NCD prevalence (cardiovascular, cancer, diabetes) alongside persisting communicable diseases and rising trauma/injuries.</li><li><strong>High Out-of-Pocket Expense:</strong> Severe financial hardship facing households accessing secondary and tertiary care.</li><li><strong>Health Security Threats:</strong> Vulnerabilities highlighted by COVID-19, public health emergencies, climate change, and regional conflicts.</li><li><strong>Technological & Societal Shifts:</strong> Urbanization, population growth, and rapid advances in digital health and Artificial Intelligence.</li></ul>"
+      },
+      {
+        id: 3,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Demographics",
+        q: "According to background data in the policy document, how did average life expectancy in Ethiopia change between 1995 (1987 E.C.) and 2023 (2015 E.C.)?",
+        a: "<p><strong>Answer:</strong> Average life expectancy at birth rose significantly from <strong>49 years in 1995 (1987 E.C.)</strong> to <strong>66.7 years in 2023 (2015 E.C.)</strong>, demonstrating substantial gains driven by the expansion of primary healthcare and child survival programs.</p>"
+      },
+      {
+        id: 4,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Constitutional Mandates",
+        q: "Which specific articles of the Constitution of the FDRE establish the state's obligation to protect and improve public health?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>Article 89(8):</strong> Mandates that the government holds the obligation to allocate resources to protect and improve public health, safety, and general welfare.</li><li><strong>Article 90(1):</strong> Directs state policies to ensure that all Ethiopians have access to public health services, clean water, and basic social amenities within available national resources.</li></ul>"
+      },
+      {
+        id: 5,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Epidemiological Shifts",
+        q: "What specific shifts in mortality patterns prompted the policy to focus heavily on Non-Communicable Diseases (NCDs)?",
+        a: "<p><strong>Answer:</strong> NCDs (cardiovascular diseases, cancers, chronic respiratory illnesses, and diabetes mellitus) now account for over 40% of all national deaths in Ethiopia, creating a double burden alongside endemic maternal and communicable conditions.</p>"
+      },
+      {
+        id: 6,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Urbanization Challenges",
+        q: "How does rapid urbanization in Ethiopia impact health policy directives under the 2024 document?",
+        a: "<p><strong>Answer:</strong> Urbanization increases risks associated with industrial pollution, traffic injuries, unhealthy dietary shifts, sedentary lifestyles, and informal settlement sanitation, requiring tailored Urban Health Extension Programs (UHEP) and municipal health controls.</p>"
+      },
+      {
+        id: 7,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "3-Tier System Evolution",
+        q: "How does the April 2024 policy modify or expand upon the traditional 3-tier health delivery system introduced in 1993?",
+        a: "<p><strong>Answer:</strong> While maintaining Primary, Secondary, and Tertiary facility levels, the 2024 policy integrates sub-specialized centers of excellence, specialized ICU hubs, digitized referral linkages, and integrated emergency emergency transport networks across tiers.</p>"
+      },
+      {
+        id: 8,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Financial Distress Data",
+        q: "What economic factor regarding health spending is cited as a major driver for national health financing reform?",
+        a: "<p><strong>Answer:</strong> Direct out-of-pocket (OOP) health expenditure previously exceeded 30% of total health expenditure, pushing thousands of families into catastrophic health expenditure and impoverishment annually.</p>"
+      },
+      {
+        id: 9,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Health Security Lessons",
+        q: "What specific public health emergency vulnerabilities were highlighted by recent global and regional crises?",
+        a: "<p><strong>Answer:</strong> COVID-19, cholera outbreaks, climate droughts, and regional armed conflicts revealed critical gaps in medical supply chains, oxygen production, ICU bed capacity, and real-time surveillance.</p>"
+      },
+      {
+        id: 10,
+        sec: "Section 1: Background & Policy Evolution",
+        cat: "Enactment Authority",
+        q: "Which executive body officially approved and enacted the April 2024 National Health Policy?",
+        a: "<p><strong>Answer:</strong> The policy was formulated by the Ministry of Health (MOH) and formally approved and enacted by the <strong>FDRE Council of Ministers</strong> in April 2024 (ሚያዚያ 2016 ዓ.ም).</p>"
+      },
+
+      // Section 2: Principles, Vision & Objectives (11-20)
+      {
+        id: 11,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Core Principles",
+        q: "List and explain the seven core guiding principles upon which the April 2024 Health Policy is founded.",
+        a: "<p><strong>Answer:</strong> The seven guiding principles are:</p><ol><li><strong>Equity & Inclusion:</strong> Uncompromised access for all, eliminating geographic, financial, and social barriers.</li><li><strong>Quality & Safety:</strong> Standardized, evidence-based, safe, and compassionate clinical care.</li><li><strong>Sustainability & Resilience:</strong> Domestic resource expansion and emergency preparedness.</li><li><strong>Evidence-Based Decision Making:</strong> Relying on health metrics, research, and data systems.</li><li><strong>Transparency & Accountability:</strong> Ethical governance across administrative and facility tiers.</li><li><strong>Multisectoral Collaboration:</strong> Active partnership with non-health sectors ('Health in All Policies').</li><li><strong>Professional Ethics & Integrity:</strong> High workforce standards, respect, and patient dignity.</li></ol>"
+      },
+      {
+        id: 12,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "National Vision",
+        q: "What is the official vision statement defined in the April 2024 Policy document?",
+        a: "<p><strong>Answer:</strong> <em>'To see a healthy, productive, and prosperous society through equitable, high-quality, and resilient healthcare services.'</em></p>"
+      },
+      {
+        id: 13,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Strategic Objectives",
+        q: "What are the primary overarching objectives outlined to achieve Universal Health Coverage (UHC) and protect citizens from financial distress?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Achieve Universal Health Coverage (UHC) by guaranteeing access to an essential package of quality health services.</li><li>Ensure financial protection through expanded insurance mechanisms (CBHI/SHI) and a dedicated National Health Fund.</li><li>Build a resilient health system capable of anticipating, preventing, responding to, and recovering from public health risks and emergencies.</li></ul>"
+      },
+      {
+        id: 14,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Equity Concept",
+        q: "How does the policy define 'Health Equity' in contrast to simple equality in health distribution?",
+        a: "<p><strong>Answer:</strong> Health Equity ensures that resources and services are distributed according to actual health needs, prioritizing marginalized, remote, pastoralist, and low-income populations to ensure equal health outcomes.</p>"
+      },
+      {
+        id: 15,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Maternal & Child Health Objectives",
+        q: "What specific objective target does the policy set for preventable maternal, neonatal, and child mortality?",
+        a: "<p><strong>Answer:</strong> To eliminate all preventable maternal, neonatal, and under-five deaths through expanded skilled birth attendance, emergency obstetric and newborn care (EmONC), and universal childhood immunizations.</p>"
+      },
+      {
+        id: 16,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Resilience Objective",
+        q: "What does 'System Resilience' mean within the context of the 2024 Health Policy objectives?",
+        a: "<p><strong>Answer:</strong> The capacity of health systems at all levels to prepare for, absorb, adapt to, and rapidly recover from epidemics, disasters, conflicts, and climate shocks while maintaining uninterrupted essential routine health services.</p>"
+      },
+      {
+        id: 17,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Health in All Policies",
+        q: "Explain the concept of 'Health in All Policies' (HiAP) as embedded in the core policy principles.",
+        a: "<p><strong>Answer:</strong> HiAP mandates that non-health sectors (agriculture, water, transport, education, industry) systematically evaluate the public health consequences of their policies and infrastructure projects to promote community health.</p>"
+      },
+      {
+        id: 18,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Quality & Safety Objective",
+        q: "How is clinical quality operationalized under the policy's primary objectives?",
+        a: "<p><strong>Answer:</strong> Through continuous compliance with Standard Treatment Guidelines (STGs), infection prevention protocols (CASH), patient safety goals, and client-centered compassionate care delivery.</p>"
+      },
+      {
+        id: 19,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Sustainability Goal",
+        q: "What is the primary financial mechanism targeted to ensure long-term self-reliance and sustainability?",
+        a: "<p><strong>Answer:</strong> Mobilizing domestic financial revenue through earmarked taxes ('sin taxes'), expanding CBHI/SHI coverage, and scaling internal revenue retention (SBFR) in facilities.</p>"
+      },
+      {
+        id: 20,
+        sec: "Section 2: Policy Principles & Objectives",
+        cat: "Community Governance Goal",
+        q: "What core objective governs public participation in healthcare system administration?",
+        a: "<p><strong>Answer:</strong> Empowering communities to actively participate in health planning, service monitoring, facility board governance, and co-financing mechanisms.</p>"
+      },
+
+      // Section 3: Key Policy Directions (21-40)
+      {
+        id: 21,
+        sec: "Section 3: Key Policy Directions",
+        cat: "HEP Models",
+        q: "How does the policy adapt the Health Extension Program (HEP) across context settings, and what provisions exist for vulnerable groups?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>Tailored HEP Models:</strong> Adapts second-generation HEP to specific operational realities in <em>Agrarian</em>, <em>Pastoralist/Semi-pastoralist</em> (mobile health units), and <em>Urban</em> settings (eCHIS digital reporting, NCD screening).</li><li><strong>Special Needs & Equity:</strong> Explicit directives mandate tailored infrastructure, specialized communication tools, and targeted subsidies for persons with disabilities, elderly citizens, refugees, internally displaced persons (IDPs), and vulnerable women/children.</li></ul>"
+      },
+      {
+        id: 22,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Specialized Care",
+        q: "What policy directions are set for specialized care, organ transplantation, ICU capacity expansion, and positioning Ethiopia as a regional medical tourism hub?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Strengthen tertiary centers for sub-specialties including oncology, cardiology, neurosurgery, organ transplantation, and advanced ICU care.</li><li>Establish legislative and ethical frameworks for human organ/tissue donation and transplantation.</li><li>Accredit specialized public and private centers to international quality standards to retain domestic healthcare spending and position Ethiopia as a regional hub for medical tourism in East Africa.</li></ul>"
+      },
+      {
+        id: 23,
+        sec: "Section 3: Key Policy Directions",
+        cat: "One Health Strategy",
+        q: "How does the policy define the 'One Health' strategy regarding zoonotic risks, environmental hazards, and border screening?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>One Health Framework:</strong> Mandates collaborative, cross-sectoral surveillance and mitigation for zoonotic outbreaks, antimicrobial resistance (AMR), and food/environmental safety between human, animal, and environmental health sectors.</li><li><strong>Border Screening:</strong> Mandatory screening, quarantine protocols, and surveillance at national borders, international airports, and ports of entry to manage cross-border disease transmission.</li></ul>"
+      },
+      {
+        id: 24,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Digital Health & AI",
+        q: "What specific applications of Artificial Intelligence (AI) are mandated in the policy regarding diagnostic imaging, predictive modeling, and remote care?",
+        a: "<p><strong>Answer:</strong> The policy explicitly integrates AI technology for:</p><ul><li>Diagnostic imaging interpretation (radiology, pathology, screening).</li><li>Predictive epidemiological modeling for epidemic forecasting and resource allocation.</li><li>Automated patient electronic medical record (EMR) analysis and clinical decision support.</li><li>Telemedicine and remote specialist consultation expansion across underserved regions.</li></ul>"
+      },
+      {
+        id: 25,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Community Governance",
+        q: "In what ways does the policy guarantee community representation and women’s empowerment in facility management?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Mandates community board membership and user representation in primary and secondary hospital governing boards.</li><li>Enforces structural participation of women in health development teams, facility boards, and local healthcare decision-making bodies.</li></ul>"
+      },
+      {
+        id: 26,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Financing & SBFR",
+        q: "How does the policy address reducing high out-of-pocket medical expenditure, and what are directives concerning the National Health Fund and SBFR?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>National Health Fund (የጤና ፈንድ):</strong> Establishes a dedicated national fund supported by government allocation, earmarked health taxes (sin taxes on tobacco/alcohol/sugary beverages), and development partners.</li><li><strong>SBFR (Special Pharmacy / Revenue Retention):</strong> Legally protects health facilities' right to retain internally generated revenue from service fees to procure pharmaceuticals, maintain medical equipment, and improve facility quality.</li><li><strong>CBHI / SHI Expansion:</strong> Scaling up Community-Based Health Insurance and Social Health Insurance to reach universal coverage.</li></ul>"
+      },
+      {
+        id: 27,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Traditional Medicine",
+        q: "What frameworks are established for registration, scientific validation, safety screening, intellectual property, and integration of traditional medicine?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Establishes formal regulatory pathways under EFDA for licensing traditional practitioners and registering herbal remedies.</li><li>Requires rigorous laboratory screening and clinical research to scientifically validate efficacy while eliminating harmful practices.</li><li>Protects traditional practitioners' Intellectual Property (IP) rights and indigenous knowledge regarding medicinal flora.</li><li>Fosters formal integration of safe traditional remedies into modern health delivery settings.</li></ul>"
+      },
+      {
+        id: 28,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Food Safety & Nutrition",
+        q: "What multisectoral strategies are outlined to ensure food safety from 'farm to table' and prevent multi-age malnutrition?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Integrates food safety enforcement across production, transport, processing, and retail stages ('farm to table').</li><li>Strengthens national food fortification regulations (e.g., salt iodization, flour fortification).</li><li>Promotes multisectoral nutrition actions targeting the first 1,000 days of life, adolescent girls, and pregnant women to eradicate stunting and wasting.</li></ul>"
+      },
+      {
+        id: 29,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Mental Health Care",
+        q: "What major policy shift is introduced regarding Mental Health Services integration across primary healthcare settings?",
+        a: "<p><strong>Answer:</strong> Decentralizes mental health care by integrating psychiatric screening, counseling, and essential psychotropic medication supply into primary health centers and general OPD care.</p>"
+      },
+      {
+        id: 30,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Emergency & Trauma Care",
+        q: "How does the 2024 policy propose strengthening pre-hospital emergency trauma systems along major highway corridors?",
+        a: "<p><strong>Answer:</strong> Establishes dedicated emergency corridor dispatch centers, toll-free medical response lines, trained paramedic responder networks, and standardized ambulance transport equipment.</p>"
+      },
+      {
+        id: 31,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Environmental Health & WASH",
+        q: "What specific environmental health controls are mandated for hospital liquid waste and hazardous bio-medical waste?",
+        a: "<p><strong>Answer:</strong> Mandates that all secondary and tertiary hospitals install operational Wastewater Treatment Plants (WWTP) and high-temperature autoclaves or modern incinerators for safe waste treatment.</p>"
+      },
+      {
+        id: 32,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Climate Resilience",
+        q: "How does the health policy address climate-induced disease shifts (e.g., expanding malaria vector zones)?",
+        a: "<p><strong>Answer:</strong> Establishes climate-sensitive vector surveillance, early warning systems, and adaptive disease control strategies integrated with the Environment Protection Authority (EPA).</p>"
+      },
+      {
+        id: 33,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Antimicrobial Resistance (AMR)",
+        q: "What national measures are outlined to combat Antimicrobial Resistance across human and veterinary sectors?",
+        a: "<p><strong>Answer:</strong> Implements strict prescription-only antimicrobial dispensing rules under EFDA, establishes hospital antibiotic stewardship committees, and monitors veterinary antibiotic use.</p>"
+      },
+      {
+        id: 34,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Disability & Rehabilitation",
+        q: "What policy directives exist for physical rehabilitation, assistive devices, and prosthetic care services?",
+        a: "<p><strong>Answer:</strong> Expands regional physical rehabilitation centers, exempts essential assistive devices from import duties, and integrates basic occupational therapy into general hospitals.</p>"
+      },
+      {
+        id: 35,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Local Pharma Production",
+        q: "How does the policy incentivize local pharmaceutical and medical supply manufacturing within Ethiopia?",
+        a: "<p><strong>Answer:</strong> Offers long-term procurement guarantees, tax exemptions on raw imported active pharmaceutical ingredients (APIs), land grants, and priority access to foreign exchange reserves.</p>"
+      },
+      {
+        id: 36,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Blood Safety & Services",
+        q: "What goals are set regarding national blood supply safety, voluntary donation, and regional blood bank coverage?",
+        a: "<p><strong>Answer:</strong> Achieves 100% voluntary non-remunerated blood donation, establishes regional blood transfusion centers with viral screening (HIV, HBV, HCV, Syphilis), and implements cold-chain logistics.</p>"
+      },
+      {
+        id: 37,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Adolescent & Youth Health",
+        q: "What tailored interventions are directed for Adolescent and Youth Reproductive Health (AYRH)?",
+        a: "<p><strong>Answer:</strong> Establishes youth-friendly health corners, school health clubs, confidential counseling services, and integrated STI/HIV prevention tailored for young demographics.</p>"
+      },
+      {
+        id: 38,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Geriatric Healthcare",
+        q: "In light of demographic shifts, what strategic directions are outlined for elderly care (Geriatrics)?",
+        a: "<p><strong>Answer:</strong> Integrates specialized geriatric care training, establishes priority queueing for elderly patients in public facilities, and subsidizes chronic NCD medications for senior citizens.</p>"
+      },
+      {
+        id: 39,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Occupational Health",
+        q: "What directives govern Occupational Health and Safety (OHS) in industrial parks and clinical facilities?",
+        a: "<p><strong>Answer:</strong> Mandates routine workplace hazard assessments, mandatory personal protective equipment (PPE), health surveillance for factory workers, and occupational exposure registries.</p>"
+      },
+      {
+        id: 40,
+        sec: "Section 3: Key Policy Directions",
+        cat: "Public-Private Partnerships (PPP)",
+        q: "How does the policy framework structure Public-Private Partnerships (PPP) in tertiary hospital expansion and diagnostic services?",
+        a: "<p><strong>Answer:</strong> Encourages private capital investment for high-cost diagnostic equipment (MRI/CT scans, radiotherapy, laboratory automation) under joint-venture and lease-management agreements.</p>"
+      },
+
+      // Section 4: Key Result Areas (41-50)
+      {
+        id: 41,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "Overview of KRAs",
+        q: "Detail the six Key Result Areas (KRAs) established by the policy to measure national health performance.",
+        a: "<p><strong>Answer:</strong> The policy measures overall health transformation against 6 core KRAs:</p><ol><li><strong>Citizen Health Improvement & Mortality Reduction:</strong> Lowering maternal, neonatal, infant, and overall premature mortality.</li><li><strong>Quality & Equitable Health Infrastructure:</strong> Modernizing, equipping, and expanding healthcare facilities across urban and rural zones.</li><li><strong>Accessible & Quality Medical Supplies & Equipment:</strong> Achieving supply security for essential medicines, vaccines, and diagnostic tools.</li><li><strong>Sustainable Financial Capacity Development:</strong> Expanding health insurance and domestic financing mechanisms.</li><li><strong>Strong Sectoral Implementation Capacity:</strong> Developing a competent, ethical workforce and robust health information systems.</li><li><strong>Client / Patient Satisfaction:</strong> Ensuring high client satisfaction through respectful, compassionate, and transparent care.</li></ol>"
+      },
+      {
+        id: 42,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 1 Indicators",
+        q: "What specific mortality and morbidity metrics fall under KRA 1 (Citizen Health Improvement)?",
+        a: "<p><strong>Answer:</strong> Maternal Mortality Ratio (MMR), Neonatal Mortality Rate (NMR), Under-5 Mortality Rate (U5MR), Premature NCD Mortality, and Vaccine-Preventable Outbreak Incidences.</p>"
+      },
+      {
+        id: 43,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 2 Benchmarks",
+        q: "How is success measured under KRA 2 (Quality & Equitable Infrastructure)?",
+        a: "<p><strong>Answer:</strong> Facility density per population, percentage of facilities with WASH/CASH compliance, functional electricity/water links, and equipped emergency rooms and ICUs.</p>"
+      },
+      {
+        id: 44,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 3 Supply Metrics",
+        q: "What Key Performance Indicators (KPIs) govern KRA 3 (Medical Supplies & Equipment)?",
+        a: "<p><strong>Answer:</strong> Stock-out rates for Tracer Essential Medicines, percentage of operational biomedical equipment, local pharmaceutical manufacturing share, and APTS audit compliance.</p>"
+      },
+      {
+        id: 45,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 4 Financial Metrics",
+        q: "Which quantitative targets measure performance under KRA 4 (Sustainable Financial Capacity)?",
+        a: "<p><strong>Answer:</strong> CBHI population coverage percentage, SHI enrollment rate, proportion of total health expenditure funded domestically, and reduction in out-of-pocket spending to below 20%.</p>"
+      },
+      {
+        id: 46,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 5 Workforce & Data",
+        q: "What dimensions of capacity are evaluated under KRA 5 (Sectoral Implementation Capacity)?",
+        a: "<p><strong>Answer:</strong> Health worker-to-population ratios, professional licensing compliance, EMR/eCHIS digital adoption rate, research output, and leadership merit assessment scores.</p>"
+      },
+      {
+        id: 47,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA 6 Client Satisfaction",
+        q: "How is client/patient satisfaction measured scientifically under KRA 6 across public facilities?",
+        a: "<p><strong>Answer:</strong> Through standardized Exit Interviews, Community Scorecards, CRC (Compassionate and Respectful Care) observation audits, and facility grievance tracking registers.</p>"
+      },
+      {
+        id: 48,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA Alignment with SDGs",
+        q: "How do the 6 KRAs align with international Sustainable Development Goals (specifically SDG 3)?",
+        a: "<p><strong>Answer:</strong> They map directly to SDG 3 targets: UHC (3.8), maternal mortality reduction (3.1), child survival (3.2), epidemic eradication (3.3), NCD control (3.4), and health workforce expansion (3.c).</p>"
+      },
+      {
+        id: 49,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "Monitoring Frequency",
+        q: "At what intervals are national KRA reports submitted and evaluated by MOH leadership?",
+        a: "<p><strong>Answer:</strong> KRAs are tracked monthly via DHIS2, reviewed quarterly at regional health administrative levels, and evaluated annually at the National Health Congress.</p>"
+      },
+      {
+        id: 50,
+        sec: "Section 4: Key Result Areas (KRAs)",
+        cat: "KRA Scorecards in Facilities",
+        q: "How are national KRAs translated down to hospital-level operational management scorecards?",
+        a: "<p><strong>Answer:</strong> Hospitals integrate KRA indicators directly into standard Balanced Scorecard (BSC) operational plans, linking department incentives and performance evaluations to outcomes.</p>"
+      },
+
+      // Section 5: Implementation & Roles (51-65)
+      {
+        id: 51,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Inter-Ministerial Mandates",
+        q: "According to Section 7 of the policy, describe the explicit statutory health-related mandates assigned across government ministries.",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>MInT:</strong> Digital health infrastructure, connectivity, and technological innovation.</li><li><strong>MoE:</strong> Health education in school curricula, school feeding programs, and workforce development in teaching hospitals.</li><li><strong>MoWSA:</strong> Protecting vulnerable groups, gender equality in health, and health services for refugees/IDPs.</li><li><strong>MoA:</strong> Agricultural food security, chemical/pesticide safety, and zoonotic control under One Health.</li><li><strong>Transport & Logistics:</strong> Road safety, emission controls, and emergency transportation links.</li><li><strong>Water & Energy / Urban Infrastructure:</strong> Safe drinking water, sanitation facilities, power grid stability for health centers, and physical facility standards.</li></ul>"
+      },
+      {
+        id: 52,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Legislative Directives",
+        q: "Which existing proclamations are slated for amendment, and what new proclamations/directives are mandated under this policy?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>Amendments:</strong> Revision of Food and Medicine Administration Proclamation No. 1112/2019, insurance laws, and health regulatory directives.</li><li><strong>New Enactments:</strong> Formulating specialized proclamations for Health Service Governance, Emergency Preparedness and Public Health Control, Organ Transplantation Regulation, and Dangerous Pathogen Control.</li></ul>"
+      },
+      {
+        id: 53,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Monitoring & Evaluation",
+        q: "How does the policy establish monitoring, evaluation, and periodic policy review mechanisms across administrative tiers?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Establishes structured quarterly and annual performance reviews using standardized KPI frameworks across federal, regional (RHB), zonal, and district (Woreda) health offices.</li><li>Mandates mid-term policy reviews and a comprehensive 10-year policy evaluation cycle to adapt strategies to evolving outcomes.</li></ul>"
+      },
+      {
+        id: 54,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Ministry of Peace Role",
+        q: "What specific health mandate is assigned to the Ministry of Peace during conflict and displacement crises?",
+        a: "<p><strong>Answer:</strong> Coordinating mental health and psychosocial support (MHPSS), humanitarian health response, and physical protection for internally displaced persons (IDPs).</p>"
+      },
+      {
+        id: 55,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Ministry of Finance Role",
+        q: "What role does the Ministry of Finance play in expanding sustainable domestic health financing?",
+        a: "<p><strong>Answer:</strong> Allocating escalating annual budget shares to healthcare, operationalizing statutory fiscal transfers for the National Health Fund, and managing tax exemptions for medical imports.</p>"
+      },
+      {
+        id: 56,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Ministry of Foreign Affairs Role",
+        q: "How does the Ministry of Foreign Affairs support medical tourism, diaspora health investment, and international health diplomacy?",
+        a: "<p><strong>Answer:</strong> Appointing health attachés in diplomatic missions, facilitating health diaspora knowledge transfer, attracting foreign healthcare investment, and streamlining medical visa processing.</p>"
+      },
+      {
+        id: 57,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Ministry of Labor & Skills",
+        q: "What are the joint responsibilities of the Ministry of Labor and Skills regarding workplace health and technical health training?",
+        a: "<p><strong>Answer:</strong> Enforcing occupational safety standards in industrial workplaces, certifying TVET technical healthcare courses, and managing health worker employment programs.</p>"
+      },
+      {
+        id: 58,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Civil Service Commission",
+        q: "What administrative civil service reforms are required to support health workforce retention?",
+        a: "<p><strong>Answer:</strong> Formulating competitive salary scales, duty incentive structures, hazard allowances, career progression pathways, and merit-based leadership placement systems.</p>"
+      },
+      {
+        id: 59,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Environment Authority (EPA)",
+        q: "What environmental health governance role is executed by the Environmental Protection Authority?",
+        a: "<p><strong>Answer:</strong> Monitoring hospital industrial effluent discharge, enforcing air quality indices, regulating hazardous chemical storage, and conducting environmental impact assessments.</p>"
+      },
+      {
+        id: 60,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Regional Health Bureau (RHB) Roles",
+        q: "What are the primary operational responsibilities decentralized to Regional Health Bureaus (RHB)?",
+        a: "<p><strong>Answer:</strong> Adapting national policies to regional operational realities, managing regional hospital networks, overseeing local health professional licensing, and administering district health budgets.</p>"
+      },
+      {
+        id: 61,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Woreda Health Office Roles",
+        q: "What is the specific statutory function of the Woreda Health Office (WorHO) in health policy execution?",
+        a: "<p><strong>Answer:</strong> Direct operational management of Primary Health Care Units (PHCUs), health post supervision, CBHI scheme collection, community mobilization, and local disease outbreak reporting.</p>"
+      },
+      {
+        id: 62,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Development Partners & Donors",
+        q: "How does the policy govern international NGOs and bilateral development partners operating in Ethiopia?",
+        a: "<p><strong>Answer:</strong> Mandates strict alignment with national health priorities ('One Plan, One Budget, One Report' principle), preventing parallel structures and ensuring transparent financial disclosures.</p>"
+      },
+      {
+        id: 63,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Civic Society & Associations",
+        q: "What role do Professional Associations (e.g., Ethiopian Medical Association, Nurses Association) play in policy implementation?",
+        a: "<p><strong>Answer:</strong> Co-developing clinical treatment guidelines, conducting Continuous Professional Development (CPD) courses, participating in ethical review boards, and advocating for professional rights.</p>"
+      },
+      {
+        id: 64,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "Mid-Term Evaluation Schedule",
+        q: "When is the official mid-term review of the April 2024 Health Policy scheduled to occur?",
+        a: "<p><strong>Answer:</strong> Policy evaluation frameworks specify a formal <strong>5-year mid-term review</strong> in 2029 (2021 E.C.) to adjust strategies based on KRA progress metrics.</p>"
+      },
+      {
+        id: 65,
+        sec: "Section 5: Implementation & Inter-Ministerial Roles",
+        cat: "National Health Congress",
+        q: "What is the governance role of the annual National Health Congress chaired by the Minister of Health?",
+        a: "<p><strong>Answer:</strong> Serving as the highest national multi-stakeholder forum to review annual health performance scorecards, share regional best practices, evaluate reforms, and approve next-year priorities.</p>"
+      },
+
+      // Section 6: Medicolegal, Professional Ethics & Regulation (66-85)
+      {
+        id: 66,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Informed Consent Legalities",
+        q: "What are the legal prerequisites for Valid Informed Consent under Ethiopian healthcare law, and under what emergency conditions can consent be legally bypassed?",
+        a: "<p><strong>Answer:</strong></p><ul><li><strong>Legal Prerequisites:</strong> Adequate disclosure of diagnosis, risks, benefits, and alternatives; patient decision-making capacity (mental competence); and voluntariness (absence of coercion or misrepresentation).</li><li><strong>Emergency Bypass Exceptions:</strong> Life-threatening emergencies or severe physical disability where the patient lacks decision-making capacity, no legal surrogate/guardian is immediately available, and delaying treatment poses imminent risk of death or irreversible damage.</li></ul>"
+      },
+      {
+        id: 67,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Medical Negligence Criteria",
+        q: "What four essential legal elements must be established to prove medical negligence or malpractice in healthcare litigation?",
+        a: "<p><strong>Answer:</strong> To establish professional malpractice, all four legal elements must be proven:</p><ol><li><strong>Duty of Care:</strong> Existence of a formal clinician-patient relationship establishing a legal obligation to provide care according to accepted standards.</li><li><strong>Breach of Duty:</strong> Deviation from accepted medical standards of care or institutional SOPs.</li><li><strong>Causation (Direct Cause):</strong> Demonstrating that the practitioner's breach directly resulted in the patient's injury or deterioration.</li><li><strong>Damages / Harm:</strong> Measurable physical, psychological, or financial injury suffered by the patient.</li></ol>"
+      },
+      {
+        id: 68,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Professional Ethics Committees",
+        q: "How do institutional Health Professional Ethics and Medico-Legal Review Committees evaluate clinical error allegations?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Conduct unbiased chart audits, witness testimonies, and expert peer evaluations against National Standard Treatment Guidelines (STGs) and hospital operational SOPs.</li><li>Determine whether the adverse event resulted from systemic facility failures, unpreventable medical complications, or direct individual clinical incompetence/negligence.</li><li>Submit binding recommendations to regulatory bodies (EFDA/RHB) regarding practice license suspension, mandatory remediation, or referral to legal prosecuting authorities.</li></ul>"
+      },
+      {
+        id: 69,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Re-licensing & CPD Directives",
+        q: "What are the statutory requirements for health professional re-licensing and Continuous Professional Development (CPD) in Ethiopia?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Mandatory accumulation of accredited CPD Credit Units (typically 30 CEU points per renewal cycle) through certified educational sessions, workshops, and clinical training.</li><li>Regular competency evaluation and formal re-licensing through regional health bureaus and EFDA regulatory divisions every 3 to 5 years.</li><li>Proof of adherence to medical code of ethics, clean disciplinary record, and active clinical practice during the licensing period.</li></ul>"
+      },
+      {
+        id: 70,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Patient Confidentiality & Records",
+        q: "Under what legal circumstances may a healthcare provider disclose patient medical records without direct patient authorization?",
+        a: "<p><strong>Answer:</strong> Patient confidentiality can legally be breached only under specific statutory exemptions:</p><ul><li>Formal judicial court subpoenas or official medicolegal investigation orders.</li><li>Mandatory public health reporting of communicable epidemic diseases to prevent public harm (e.g., EPHI notified surveillance diseases).</li><li>Immediate protection of vulnerable individuals in cases of suspected child abuse, elder abuse, or severe domestic violence.</li></ul>"
+      },
+      {
+        id: 71,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Traditional Medicine Regulation",
+        q: "How does EFDA regulate traditional healthcare practices while preventing quackery and protecting public safety?",
+        a: "<p><strong>Answer:</strong></p><ul><li>Formal registration and licensing of traditional practitioners based on verified community standing and practitioner peer review.</li><li>Laboratory toxicity testing and safety screening of herbal remedies to detect heavy metal, chemical, or microbial contamination.</li><li>Strict prohibitions and legal sanctions against unproven, invasive, or dangerous procedures advertised as medical cures.</li></ul>"
+      },
+      {
+        id: 72,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Res Ipsa Loquitur",
+        q: "Explain the legal doctrine of 'Res Ipsa Loquitur' in medical malpractice litigation.",
+        a: "<p><strong>Answer:</strong> 'The thing speaks for itself.' A legal doctrine applied when an injury occurs that ordinarily would not happen without negligence (e.g., surgical instrument left inside a patient abdomen), shifting the burden of proof to the defendant clinician to prove they were not negligent.</p>"
+      },
+      {
+        id: 73,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Vicarious Liability in Hospitals",
+        q: "What is 'Vicarious Liability' and how does it apply to hospital administrative leaders during clinical negligence lawsuits?",
+        a: "<p><strong>Answer:</strong> Vicarious liability holds an employer (hospital administration or MOH) legally responsible for negligent acts committed by employees acting within the routine scope of their employment duties.</p>"
+      },
+      {
+        id: 74,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Therapeutic Privilege Exception",
+        q: "Define 'Therapeutic Privilege' and its strict limitations in clinician-patient communication.",
+        a: "<p><strong>Answer:</strong> An extremely narrow legal exception where a clinician temporarily withhold full diagnostic details if convincing clinical evidence shows disclosure would cause immediate, severe psychological harm or suicidal crisis to the patient.</p>"
+      },
+      {
+        id: 75,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Medical Records Integrity",
+        q: "What are the legal consequences of altering, backdating, or tampering with clinical records after an adverse outcome?",
+        a: "<p><strong>Answer:</strong> Record tampering constitutes criminal obstruction of justice and falsification of official documents, creates a presumption of guilty knowledge in civil litigation, and leads to immediate professional license revocation.</p>"
+      },
+      {
+        id: 76,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Refusal of Treatment & DNR",
+        q: "How must a clinician legally handle a competent adult patient's formal refusal of life-saving medical treatment?",
+        a: "<p><strong>Answer:</strong> Mentally competent adults hold the constitutional and legal right to refuse treatment. Clinicians must fully explain consequences, document the informed refusal process thoroughly, obtain signed 'Against Medical Advice' (AMA) forms, and continue supportive care.</p>"
+      },
+      {
+        id: 77,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Euthanasia & End-of-Life Law",
+        q: "What is the legal status of Active Euthanasia and Physician-Assisted Suicide under the FDRE Penal Code?",
+        a: "<p><strong>Answer:</strong> Active Euthanasia and Physician-Assisted Suicide are strictly illegal and classified as homicide under the FDRE Criminal Code, regardless of consent or terminal patient condition.</p>"
+      },
+      {
+        id: 78,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Good Samaritan Protection",
+        q: "Does Ethiopian law provide 'Good Samaritan' protections for off-duty healthcare workers assisting in road traffic emergencies?",
+        a: "<p><strong>Answer:</strong> Legal directives protect healthcare professionals rendering emergency assistance at disaster or accident scenes in good faith without fee expectations from civil liability, provided care does not constitute gross negligence.</p>"
+      },
+      {
+        id: 79,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Organ Procurement Laws",
+        q: "What legal consent principles govern human organ donation from deceased donors under emerging organ transplant regulations?",
+        a: "<p><strong>Answer:</strong> Requires documented explicit pre-mortem donor consent ('opt-in') or written authorization from legal first-degree next-of-kin surrogate after verified clinical brain death determination.</p>"
+      },
+      {
+        id: 80,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Clinical Research Ethics",
+        q: "What institutional oversight is legally required before conducting biomedical clinical trials involving human subjects?",
+        a: "<p><strong>Answer:</strong> Mandatory protocol review and formal approval by a recognized Institutional Review Board (IRB) / Ethics Committee, EFDA clinical trial registration, and individual written voluntary informed consent.</p>"
+      },
+      {
+        id: 81,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Reporting Child Abuse",
+        q: "What is the statutory obligation of healthcare providers when treating pediatric patients presenting signs of non-accidental physical or sexual abuse?",
+        a: "<p><strong>Answer:</strong> Mandatory legal duty to immediately report suspected child abuse or neglect to hospital social work units, child protection authorities, and law enforcement agencies, protected by statutory confidentiality immunity.</p>"
+      },
+      {
+        id: 82,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Counterfeit Drug Enforcement",
+        q: "What criminal penalties apply under EFDA Proclamation 1112/2019 for importing or distributing counterfeit pharmaceuticals?",
+        a: "<p><strong>Answer:</strong> Severe criminal penalties, including heavy financial fines, permanent business closure, asset forfeiture, and lengthy prison sentences proportional to public harm caused.</p>"
+      },
+      {
+        id: 83,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Telemedicine Liability",
+        q: "How does medical liability apply during remote digital consultations or Telemedicine services?",
+        a: "<p><strong>Answer:</strong> Treating clinicians engaged in telemedicine owe the exact same Standard of Care and legal duty to patients as in-person consultations, including informed consent, data encryption, and complete record maintenance.</p>"
+      },
+      {
+        id: 84,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Conflict of Interest Rules",
+        q: "What ethical and legal directives regulate pharmaceutical company kickbacks, gifts, or financial incentives to prescribing physicians?",
+        a: "<p><strong>Answer:</strong> Prohibits clinicians from accepting financial inducements, expensive gifts, or commissioned bonuses from drug companies in exchange for prescribing specific pharmaceutical products.</p>"
+      },
+      {
+        id: 85,
+        sec: "Section 6: Medicolegal & Professional Ethics",
+        cat: "Professional Impairment Reporting",
+        q: "What duty do healthcare professionals have when observing a colleague practicing under the influence of substance abuse or severe illness?",
+        a: "<p><strong>Answer:</strong> Mandatory ethical and administrative obligation to report impaired colleagues to hospital clinical leadership or ethics committees to safeguard patient safety and initiate practitioner rehabilitation.</p>"
+      },
+
+      // Section 7: Operational Toolkit & Hospital Economics (86-100)
+      {
+        id: 86,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Disinfection Chemistry",
+        q: "Why is a 0.5% Sodium Hypochlorite (bleach) solution specifically mandated for blood and body fluid spills rather than standard 0.1% surface cleaning solutions?",
+        a: "<p><strong>Answer:</strong> High organic protein loads in blood and body fluid spills neutralize available active chlorine rapidly; a 0.5% (5000 ppm) concentration provides sufficient free chlorine surplus to achieve rapid inactivation of bloodborne pathogens like HBV, HCV, and HIV.</p>"
+      },
+      {
+        id: 87,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Dilution Formula Mathematics",
+        q: "State the mathematical formula used to calculate stock bleach volume ($V_1$) required to prepare a target volume ($V_2$) of diluted disinfectant solution of target concentration ($C_2$).",
+        a: "<p><strong>Answer:</strong> Standard volumetric dilution equation: $C_1 \\times V_1 = C_2 \\times V_2$, rearranged as $V_1 = (C_2 \\times V_2) / C_1$, where $C_1$ is stock bleach concentration, $V_1$ is required bleach volume, $C_2$ is target concentration, and $V_2$ is final total desired solution volume.</p>"
+      },
+      {
+        id: 88,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Duty Incentive Structure",
+        q: "How are duty shift multipliers (e.g., 100% for night shift, 125% for weekend/holiday) justified in hospital administrative budgets under civil service duty guidelines?",
+        a: "<p><strong>Answer:</strong> Duty multipliers compensate healthcare personnel for unsociable hours, physical fatigue, and heightened emergency patient load risks during night and weekend hours, improving workforce retention and off-hour clinical coverage.</p>"
+      },
+      {
+        id: 89,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Hourly Salary Calculation Base",
+        q: "What standard divisor is used in government hospital pay structures to derive an employee's hourly base pay rate from their monthly basic salary?",
+        a: "<p><strong>Answer:</strong> Standard monthly civil service working hours are calculated as **160 hours** per month (based on 40 regular hours per week multiplied by 4 weeks), serving as the baseline divisor: $\\text{Hourly Base Rate} = \\text{Monthly Base Salary} / 160$.</p>"
+      },
+      {
+        id: 90,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Linen Laundry Segregation",
+        q: "Why must hospital textiles contaminated with blood or infectious secretions be segregated at the point of origin rather than in the central laundry department?",
+        a: "<p><strong>Answer:</strong> Point-of-origin segregation prevents cross-contamination of clean ward linens, minimizes physical handling, reduces sharps injury hazards for laundry personnel, and ensures immediate placement into leak-proof biohazard bags.</p>"
+      },
+      {
+        id: 91,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Thermal Disinfection Standards",
+        q: "What are the minimal temperature and time threshold parameters required for thermal laundry disinfection of infectious hospital textiles according to CASH guidelines?",
+        a: "<p><strong>Answer:</strong> Thermal wash cycles must maintain water temperatures of at least **70°C for a minimum of 25 minutes** or **90°C for at least 10 minutes** during the main wash phase to destroy non-spore-forming vegetative pathogens.</p>"
+      },
+      {
+        id: 92,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Laundry Chemical Dosing",
+        q: "How does soil severity classification (light, medium, heavy) alter chemical detergent and bleach dosing ratios per kilogram of dry linen?",
+        a: "<p><strong>Answer:</strong> Detergent rates escalate from 10g/kg (light soil) to 15g/kg (medium) and 22g/kg (heavy/contaminated soil), while bleach disinfectant dosing increases from 15 mL/kg up to 30 mL/kg to ensure thorough soil emulsification and microbial reduction.</p>"
+      },
+      {
+        id: 93,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "APTS Financial Controls",
+        q: "What are the primary objectives of Auditable Pharmaceutical Transactions and Services (APTS) implementation in public hospital pharmacies?",
+        a: "<p><strong>Answer:</strong> APTS establishes daily inventory tracking, transparent financial transactions, precise drug billing, reduction of pharmaceutical wastage/theft, and actionable prescribing data analysis.</p>"
+      },
+      {
+        id: 94,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "SBFR Revenue Retention Utilization",
+        q: "How are public health facilities legally restricted regarding how retained internal revenue (SBFR) can be re-invested?",
+        a: "<p><strong>Answer:</strong> Retained revenue must be prioritized strictly for facility quality improvements: purchasing essential medicines/reagents, repairing biomedical equipment, maintaining infrastructure, and paying authorized staff duty incentives.</p>"
+      },
+      {
+        id: 95,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "CASH Facility Requirements",
+        q: "What core physical sanitation infrastructure standards are evaluated during a Clean and Safe Health Facility (CASH) audit?",
+        a: "<p><strong>Answer:</strong> Functional hand hygiene stations (running water + soap/rub) at all point-of-care locations, segregated waste bins (color-coded), clean functional flush toilets, vector control screens, and dedicated clean/dirty utility rooms.</p>"
+      },
+      {
+        id: 96,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Biomedical Equipment Maintenance",
+        q: "What operational strategy does the policy prescribe to prevent premature failure of high-cost biomedical devices (e.g., ventilators, dialysis units)?",
+        a: "<p><strong>Answer:</strong> Implementing Planned Preventive Maintenance (PPM) schedules, establishing regional biomedical engineering repair workshops, and including multi-year service contracts in original equipment procurements.</p>"
+      },
+      {
+        id: 97,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Hospital Triage Systems",
+        q: "Describe the standardized triage coding system mandated in emergency departments under EHSTG guidelines.",
+        a: "<p><strong>Answer:</strong> Modern South African Triage Scale (SATS) or equivalent: <strong>Red</strong> (Immediate life-threat / resuscitation), <strong>Orange</strong> (Very urgent / 10-min limit), <strong>Yellow</strong> (Urgent care / 1-hr limit), and <strong>Green</strong> (Non-urgent / OPD transfer).</p>"
+      },
+      {
+        id: 98,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Hospital Discharge Planning",
+        q: "According to EHSTG protocols, when should patient discharge planning begin during an inpatient admission?",
+        a: "<p><strong>Answer:</strong> Discharge planning begins **at the point of admission**, identifying home care needs, family support requirements, medication counseling, and follow-up clinical bookings early to reduce length of stay.</p>"
+      },
+      {
+        id: 99,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Cold Chain Management",
+        q: "What are the legal temperature storage range parameters required for routine vaccines and blood products in hospital pharmacy/blood storage units?",
+        a: "<p><strong>Answer:</strong> Vaccine cold chain storage must be maintained strictly between **+2°C and +8°C** for standard vaccines, while whole blood products must be preserved between **+2°C and +6°C** with continuous continuous temperature logging.</p>"
+      },
+      {
+        id: 100,
+        sec: "Section 7: Operational Toolkit & Hospital Economics",
+        cat: "Quality Desk Responsibilities",
+        q: "What are the core operational duties assigned to Hospital Clothing Supply, Utilization, and Quality Monitoring Desk leads?",
+        a: "<p><strong>Answer:</strong> Managing textile inventory cycles, establishing daily laundry SOP compliance, inspecting post-wash fabric sterility/integrity, overseeing linen distribution ratios across clinical wards, and managing apparel procurement budgeting.</p>"
+      }
+    ];
+
     const userStatus = {};
+
+    // Render all 100 questions into the DOM on initial load
+    function renderQuestions() {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = "";
+
+      let currentSec = "";
+
+      questionsData.forEach(item => {
+        if (item.sec !== currentSec) {
+          currentSec = item.sec;
+          const secHeader = document.createElement('h2');
+          secHeader.style.color = "var(--accent)";
+          secHeader.style.margin = "30px 0 15px 0";
+          secHeader.style.fontSize = "1.2rem";
+          secHeader.style.borderBottom = "1px solid var(--border)";
+          secHeader.style.paddingBottom = "6px";
+          secHeader.innerText = currentSec;
+          container.appendChild(secHeader);
+        }
+
+        const qCard = document.createElement('div');
+        qCard.className = "q-card searchable";
+        qCard.id = `q${item.id}`;
+
+        qCard.innerHTML = `
+          <div class="q-header">
+            <span class="q-num">Q${item.id} • ${item.cat}</span>
+            <div>
+              <button class="btn-status" onclick="setQStatus(${item.id}, 'mastered')">✓ Mastered</button>
+              <button class="btn-status" onclick="setQStatus(${item.id}, 'review')">⚠ Review</button>
+            </div>
+          </div>
+          <div class="q-title">${item.q}</div>
+          <button class="btn" style="margin-top: 10px;" onclick="toggleAnswer(${item.id})">Reveal Cited Answer Key</button>
+          <div class="answer-box" id="ans-${item.id}">
+            ${item.a}
+          </div>
+        `;
+
+        container.appendChild(qCard);
+      });
+
+      document.getElementById('total-count').innerText = questionsData.length;
+      document.getElementById('sidebar-badge').innerText = `${questionsData.length} Qs`;
+    }
 
     // Tab Switching Functionality
     function switchTab(tabId) {
@@ -1499,8 +2023,9 @@
         'core-pillars': 'Core Policy Directions & Pillars (2024)',
         'why-amended': 'Policy Rationale, Guiding Principles & Objectives',
         'key-reforms': 'Institutional Reforms, Directives & Sectoral Integration',
-        'medicolegal-ethics': 'Regulatory Standards, Ethics & Indigenous Knowledge',
+        'medicolegal-ethics': 'Medicolegal, Regulatory Standards & Professional Ethics',
         'operational-toolkit': 'Hospital Operational Toolkit (Disinfection & Duty Pay)',
+        'laundry-sop': 'Hospital Laundry SOP, Chemical Dosing & Quality Monitoring Checklist',
         'references': 'Official References & Legislative Directives'
       };
       document.getElementById('page-title').innerText = titleMap[tabId] || 'Health Policy Details';
@@ -1515,7 +2040,7 @@
     }
 
     function toggleAllAnswers(show) {
-      for (let i = 1; i <= 19; i++) {
+      for (let i = 1; i <= questionsData.length; i++) {
         const box = document.getElementById(`ans-${i}`);
         if (box) {
           if (show) box.classList.add('visible');
@@ -1588,7 +2113,6 @@
         return;
       }
 
-      // Formula: V1 = (C2 * V2) / C1
       const bleachVolL = (target * totalVolL) / stock;
       const waterVolL = totalVolL - bleachVolL;
       const bleachVolMl = bleachVolL * 1000;
@@ -1605,7 +2129,6 @@
       const shiftType = document.getElementById('dutyShift').value;
       const shiftsCount = parseInt(document.getElementById('dutyShiftsCount').value) || 0;
 
-      // Standard monthly working hours = 160 hours (8h x 20 days)
       const hourlyRate = baseSalary / 160;
 
       let hoursPerShift = 16;
@@ -1628,6 +2151,58 @@
       document.getElementById('resHourlyRate').innerText = `${hourlyRate.toFixed(2)} ETB / hr`;
       document.getElementById('resShiftPay').innerText = `${payPerShift.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ETB`;
       document.getElementById('resTotalDuty').innerText = `${totalDutyPay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ETB`;
+    }
+
+    // Laundry Calculator
+    function calculateLaundryDose() {
+      const weight = parseFloat(document.getElementById('linenWeight').value) || 0;
+      const soil = document.getElementById('soilLevel').value;
+
+      if (weight <= 0) {
+        document.getElementById('resDetergent').innerText = 'Invalid Input';
+        document.getElementById('resBleachDose').innerText = 'Invalid Input';
+        document.getElementById('resCycleTime').innerText = '-';
+        return;
+      }
+
+      let detRate = 10; // g/kg
+      let bleachRate = 15; // mL/kg
+      let time = 35; // mins
+
+      if (soil === 'medium') {
+        detRate = 15;
+        bleachRate = 20;
+        time = 45;
+      } else if (soil === 'heavy') {
+        detRate = 22;
+        bleachRate = 30;
+        time = 60;
+      }
+
+      const totalDetergent = Math.round(weight * detRate);
+      const totalBleach = Math.round(weight * bleachRate);
+
+      document.getElementById('resDetergent').innerText = `${totalDetergent} g`;
+      document.getElementById('resBleachDose').innerText = `${totalBleach} mL`;
+      document.getElementById('resCycleTime').innerText = `${time} mins`;
+    }
+
+    // Laundry Checklist Tracker
+    function updateChecklistCount() {
+      const checkboxes = document.querySelectorAll('#laundry-sop .checklist-group input[type="checkbox"]');
+      let checkedCount = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / checkboxes.length) * 100);
+      document.getElementById('checklist-score').innerText = `${checkedCount} / ${checkboxes.length} (${pct}%)`;
+    }
+
+    function resetChecklist() {
+      const checkboxes = document.querySelectorAll('#laundry-sop .checklist-group input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
+      updateChecklistCount();
     }
 
     // Global Search Engine Across All Tabs and Question Cards
@@ -1667,9 +2242,11 @@
       });
     }
 
-    // Initialize Calculators
+    // Initialize Questions & Calculators on load
+    renderQuestions();
     calculateBleach();
     calculateDuty();
+    calculateLaundryDose();
   </script>
 </body>
 </html>
